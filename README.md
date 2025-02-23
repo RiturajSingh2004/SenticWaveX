@@ -45,6 +45,7 @@ Ensure you have the following installed:
 ```bash
 git clone https://github.com/your-repo/SenticWaveX.git
 cd SenticWaveX
+```
 
 2️⃣ Create a virtual environment (optional but recommended)
 
