@@ -81,6 +81,7 @@ Example:
 python SenticWaveX.py --duration 10 --verbose --confidence-threshold 0.7
 ```
 🖥️ How It Works
+```bash
 1️⃣ Audio Processing & Feature Extraction
 Captures real-time audio from input devices using Sounddevice API
 Applies preprocessing & normalization
@@ -96,7 +97,7 @@ Uses QNN Execution Provider (Qualcomm) or CPU fallback
 Applies probability transition matrix to stabilize predictions
 Uses signal-to-noise ratio (SNR) filtering for quality enhancement
 Maintains prediction history (past 5 results) for consistent outputs
-
+```
 🛠️ Troubleshooting
 🔹 Issue: No audio device detected
 
@@ -114,6 +115,7 @@ print(sd.query_devices())
 Ensure ONNXRuntime is installed:
 ```bash
 pip install onnxruntime
+```
 Try manually converting the model:
 ```python
 python -c "import torch; from transformers import WavLMForSequenceClassification; model = WavLMForSequenceClassification.from_pretrained('microsoft/wavlm-base-plus'); torch.onnx.export(model, torch.randn(1, 8000), 'wavlm_optimized.onnx')"
