@@ -86,13 +86,16 @@ python SenticWaveX.py --duration 10 --verbose --confidence-threshold 0.7
 Captures real-time audio from input devices using Sounddevice API
 Applies preprocessing & normalization
 Uses Wav2Vec2FeatureExtractor for speech feature extraction
+
 2️⃣ Deep Learning-based Emotion Recognition
 WavLM (Hugging Face) processes audio signals
 Model predicts 7 emotion classes with softmax probabilities
+
 3️⃣ ONNX Optimization & Hardware Acceleration
 Converts PyTorch model to ONNX
 Executes inference using ONNXRuntime
 Uses QNN Execution Provider (Qualcomm) or CPU fallback
+
 4️⃣ Confidence Boosting & Emotion Smoothing
 Applies probability transition matrix to stabilize predictions
 Uses signal-to-noise ratio (SNR) filtering for quality enhancement
