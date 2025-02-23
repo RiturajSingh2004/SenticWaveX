@@ -43,35 +43,31 @@ Ensure you have the following installed:
 ### **🔹 Setup**  
 1️⃣ **Clone the repository**  
 ```bash
-git clone https://github.com/your-repo/SenticWaveX.git
+git clone https://github.com/RiturajSingh2004/SenticWaveX.git
 cd SenticWaveX
 ```
 
 2️⃣ Create a virtual environment (optional but recommended)
 
-bash
-Copy
-Edit
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 3️⃣ Install dependencies
 
-bash
-Copy
-Edit
+```bash
 pip install -r requirements.txt
+```
 4️⃣ Download WavLM Model (Caches automatically)
 
-bash
-Copy
-Edit
+```bash
 python -c "from transformers import WavLMForSequenceClassification; WavLMForSequenceClassification.from_pretrained('microsoft/wavlm-base-plus')"
+```
 🚀 Usage
 🔹 Running Real-time Emotion Detection
-bash
-Copy
-Edit
-python emmo2.py --verbose --confidence-threshold 0.6
+```bash
+python SenticWaveX.py --verbose --confidence-threshold 0.6
+```
 🔹 Available Arguments
 Argument	Description	Default
 --duration	Duration to run the analysis (0 for unlimited)	0
@@ -81,10 +77,9 @@ Argument	Description	Default
 --history-size	Number of past predictions to smooth results	5
 Example:
 
-bash
-Copy
-Edit
-python emmo2.py --duration 10 --verbose --confidence-threshold 0.7
+```bash
+python SenticWaveX.py --duration 10 --verbose --confidence-threshold 0.7
+```
 🖥️ How It Works
 1️⃣ Audio Processing & Feature Extraction
 Captures real-time audio from input devices using Sounddevice API
@@ -101,40 +96,28 @@ Uses QNN Execution Provider (Qualcomm) or CPU fallback
 Applies probability transition matrix to stabilize predictions
 Uses signal-to-noise ratio (SNR) filtering for quality enhancement
 Maintains prediction history (past 5 results) for consistent outputs
-📌 Example Output
-bash
-Copy
-Edit
-[16:45:12] Emotion: Happy     Confidence: 92.5%  Time remaining: 9.5s
-[16:45:13] Emotion: Happy     Confidence: 91.8%  Time remaining: 8.5s
-[16:45:14] Emotion: Neutral   Confidence: 78.2%  Time remaining: 7.5s
-[16:45:15] Emotion: Neutral   Confidence: 79.5%  Time remaining: 6.5s
+
 🛠️ Troubleshooting
 🔹 Issue: No audio device detected
 
 Try specifying a different device:
-bash
-Copy
-Edit
-python emmo2.py --device 1
+```bash
+python SenticWaveX.py --device 1
+```
 Check available devices:
-python
-Copy
-Edit
+```python
 import sounddevice as sd
 print(sd.query_devices())
+```
 🔹 Issue: ONNX model conversion fails
 
 Ensure ONNXRuntime is installed:
-bash
-Copy
-Edit
+```bash
 pip install onnxruntime
 Try manually converting the model:
-python
-Copy
-Edit
+```python
 python -c "import torch; from transformers import WavLMForSequenceClassification; model = WavLMForSequenceClassification.from_pretrained('microsoft/wavlm-base-plus'); torch.onnx.export(model, torch.randn(1, 8000), 'wavlm_optimized.onnx')"
+```
 📜 License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
